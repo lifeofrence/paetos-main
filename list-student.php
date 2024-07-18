@@ -1,15 +1,14 @@
 <?php
 session_start();
 
-// Check if user ignhfs logged in and has admin role
+// Check iffgd usegffdr is logged in and has admin role
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 	header("Location: admin_login.html"); // Redirect to login page if not logged in or not admin
 	exit();
 }
 
-include 'php/fetch_admin_info.php'; 
+include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 
-// HTML structures starts here
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +60,7 @@ include 'php/fetch_admin_info.php';
 			Nav header start
 		***********************************-->
 		<div class="nav-header">
-			<a href="index.html" class="brand-logo">
+			<a href="admin-dashboard.php" class="brand-logo">
 
 
 
@@ -89,7 +88,7 @@ include 'php/fetch_admin_info.php';
 					<div class="collapse navbar-collapse justify-content-between">
 						<div class="header-left">
 							<div class="dashboard_bar">
-								<?php echo htmlspecialchars($admin['username']); ?> Dashboard
+							 <span class="text-danger text-bold">       Dashboard</span> 
 							</div>
 
 						</div>
@@ -103,22 +102,11 @@ include 'php/fetch_admin_info.php';
 								</a>
 							</li>
 
-							<li class="nav-item dropdown notification_dropdown">
-								<a class="nav-link" href="#;" role="button" data-bs-toggle="dropdown">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<g data-name="Layer 2" transform="translate(-2 -2)">
-											<path id="Path_20" data-name="Path 20" d="M22.571,15.8V13.066a8.5,8.5,0,0,0-7.714-8.455V2.857a.857.857,0,0,0-1.714,0V4.611a8.5,8.5,0,0,0-7.714,8.455V15.8A4.293,4.293,0,0,0,2,20a2.574,2.574,0,0,0,2.571,2.571H9.8a4.286,4.286,0,0,0,8.4,0h5.23A2.574,2.574,0,0,0,26,20,4.293,4.293,0,0,0,22.571,15.8ZM7.143,13.066a6.789,6.789,0,0,1,6.78-6.78h.154a6.789,6.789,0,0,1,6.78,6.78v2.649H7.143ZM14,24.286a2.567,2.567,0,0,1-2.413-1.714h4.827A2.567,2.567,0,0,1,14,24.286Zm9.429-3.429H4.571A.858.858,0,0,1,3.714,20a2.574,2.574,0,0,1,2.571-2.571H21.714A2.574,2.574,0,0,1,24.286,20a.858.858,0,0,1-.857.857Z" />
-										</g>
-									</svg>
-									<span class="badge light text-white bg-primary rounded-circle">0</span>
-								</a>
-
-							</li>
 
 
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#;" role="button" data-bs-toggle="dropdown">
-									<img src="images/avatar/1.png" alt="">
+									<img src="images/veritas.png" alt="">
 
 									<div class="dropdown-menu dropdown-menu-end">
 										<a href="profile.php" class="dropdown-item ai-icon">
@@ -153,9 +141,9 @@ include 'php/fetch_admin_info.php';
 		<div class="dlabnav">
 			<div class="dlabnav-scroll">
 				<div class="dropdown header-profile2 ">
-					<a class="nav-link " href="#;" role="button" data-bs-toggle="dropdown">
+					<a class="nav-link " href="admin-dashboard.php" role="button" data-bs-toggle="dropdown">
 						<div class="header-info2 d-flex align-items-center">
-							<img src="images/avatar/1.png" alt="">
+							<img src="images/veritas.png" alt="">
 
 							<div class="d-flex align-items-center sidebar-info">
 								<div>
@@ -167,37 +155,42 @@ include 'php/fetch_admin_info.php';
 
 						</div>
 					</a>
-					<div class="dropdown-menu dropdown-menu-end">
-						<a href="profile.php" class="dropdown-item ai-icon ">
-							<svg xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-								<circle cx="12" cy="7" r="4"></circle>
-							</svg>
-							<span class="ms-2">Profile </span>
-						</a>
-
-						<a href="php/admin_logout.php" class="dropdown-item ai-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-								<polyline points="16 17 21 12 16 7"></polyline>
-								<line x1="21" y1="12" x2="9" y2="12"></line>
-							</svg>
-							<span class="ms-2">Logout </span>
-						</a>
-					</div>
+					
 				</div>
 				<ul class="metismenu" id="menu">
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+					<li><a class="" href="admin-dashboard.php" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
-						<ul aria-expanded="false">
-							<li><a href="book-hostel.php">Upload Proof</a></li>
-							<li><a href="allocation-slip.php">Check Status</a></li>
-
-						</ul>
+						
 
 					</li>
+					<li><a class="" href="manage-hostel.php" aria-expanded="false">
+							<i class="flaticon-046-home"></i>
+							<span class="nav-text">	Manage Hotel</span>
+						</a>
+						
+					</li>
+				
+					<li><a class="" href="confirm-payments.php" aria-expanded="false">
+							<i class="flaticon-046-home"></i>
+							<span class="nav-text">	Confirm Payment</span>
+						</a>
+						
+					</li>
+					<li><a class="" href="list-student.php" aria-expanded="false">
+							<i class="flaticon-046-home"></i>
+							<span class="nav-text">	List Student</span>
+						</a>
+						
+					</li>
+					<li><a class="" href="manage-hostel.php#view_room" aria-expanded="false">
+							<i class="flaticon-046-home"></i>
+							<span class="nav-text">	View Hostel</span>
+						</a>
+						
+					</li>
+					
 					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
 							<i class="flaticon-093-waving"></i>
 							<span class="nav-text">Complain</span>
@@ -216,36 +209,60 @@ include 'php/fetch_admin_info.php';
 		<!--**********************************
 			Sidebar end
 		***********************************-->
-		<!--**************************************
-            Content body start
-        ***********************************-->
-        <div class="content-body">
-            <div class="container-fluid">
-				<div class="row page-titles">
-					
-                </div>
-                <!-- row -->
-               
-            </div>
-        </div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
-
-
 
 		<!--**********************************
 			Content body end
 		***********************************-->
 
+		<div class="content-body">
+        <div class="container-fluid">
+            <div class="row page-titles">
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"> List Student</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="userTable">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Reg No</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Gender</th>
+                                            <th>Contact No</th>
+                                            <th>Email</th>
+                                           
+                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Content will be dynamically loaded here via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div><a href="edit-student.php" class="btn btn-primary btn-sm btn-save col-4">Eidt Student</a></div>
+				
+            </div>
+        </div>
+    </div>
 
 
+		
 		<!--**********************************
 			Footer start
 		***********************************-->
 		<div class="footer">
 			<div class="copyright">
-				<p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">ClintonCode</a> 2024</p>
+				<p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">SoftwareTeam  Veritas ICT </a> 2024</p>
 			</div>
 		</div>
 
@@ -276,6 +293,12 @@ include 'php/fetch_admin_info.php';
 	<script src="js/custom.min.js"></script>
 	<script src="js/dlabnav-init.js"></script>
 	<script src="js/demo.js"></script>
+
+	<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<!-- DataTables JavaScript -->
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 	<!-- <script src="js/styleSwitcher.js"></script> -->
 	<script>
 		jQuery(document).ready(function() {
@@ -327,6 +350,43 @@ include 'php/fetch_admin_info.php';
 			}, 1000);
 		});
 	</script>
+ <script>
+    $(document).ready(function() {
+        $.getJSON('php/fetch_user.php', function(data) {
+            if (data.status === 'success') {
+                var users = data.users;
+                var tableBody = $('#userTable tbody'); // Corrected selector for table body
+                tableBody.empty(); // Clear existing rows
+
+                users.forEach(function(user, index) {
+                    var row = `
+                        <tr>
+                            <td>${index + 1}</td>
+                            <td>${user.regNo}</td>
+                            <td>${user.firstName}</td>
+                            <td>${user.middleName}</td>
+                            <td>${user.lastName}</td>
+                            <td>${user.gender}</td>
+                            <td>${user.contactNo}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <!-- Add actions here if needed -->
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.append(row);
+                });
+            } else {
+                console.error('Error:', data.message);
+            }
+        }).fail(function(error) {
+            console.error('Error fetching user data:', error);
+        });
+    });
+</script>
+
+
+
 </body>
 
 

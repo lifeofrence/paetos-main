@@ -335,7 +335,7 @@ $students_info = fetch_user_details();
 		***********************************-->
 		<div class="footer">
 			<div class="copyright">
-				<p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">ClintonCode</a> 2024</p>
+				<p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">SoftwareTeam  Veritas ICT </a> 2024</p>
 			</div>
 		</div>
 

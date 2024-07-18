@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Check if user is logged in and has admin role
+// Check iffgd usegffdr is logged in and has admin role
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 	header("Location: admin_login.html"); // Redirect to login page if not logged in or not admin
 	exit();
@@ -9,9 +9,6 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['role']) || $_SESSION['role
 
 include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 
-// You can also include other necessary files, like config.php for database connection
-
-// HTML structure starts here
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +60,7 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 			Nav header start
 		***********************************-->
 		<div class="nav-header">
-			<a href="index.html" class="brand-logo">
+			<a href="admin-dashboard.php" class="brand-logo">
 
 
 
@@ -91,7 +88,7 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 					<div class="collapse navbar-collapse justify-content-between">
 						<div class="header-left">
 							<div class="dashboard_bar">
-								<?php echo htmlspecialchars($admin['username']); ?> Dashboard
+							 <span class="text-danger text-bold">       Dashboard</span> 
 							</div>
 
 						</div>
@@ -105,22 +102,11 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 								</a>
 							</li>
 
-							<li class="nav-item dropdown notification_dropdown">
-								<a class="nav-link" href="#;" role="button" data-bs-toggle="dropdown">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-										<g data-name="Layer 2" transform="translate(-2 -2)">
-											<path id="Path_20" data-name="Path 20" d="M22.571,15.8V13.066a8.5,8.5,0,0,0-7.714-8.455V2.857a.857.857,0,0,0-1.714,0V4.611a8.5,8.5,0,0,0-7.714,8.455V15.8A4.293,4.293,0,0,0,2,20a2.574,2.574,0,0,0,2.571,2.571H9.8a4.286,4.286,0,0,0,8.4,0h5.23A2.574,2.574,0,0,0,26,20,4.293,4.293,0,0,0,22.571,15.8ZM7.143,13.066a6.789,6.789,0,0,1,6.78-6.78h.154a6.789,6.789,0,0,1,6.78,6.78v2.649H7.143ZM14,24.286a2.567,2.567,0,0,1-2.413-1.714h4.827A2.567,2.567,0,0,1,14,24.286Zm9.429-3.429H4.571A.858.858,0,0,1,3.714,20a2.574,2.574,0,0,1,2.571-2.571H21.714A2.574,2.574,0,0,1,24.286,20a.858.858,0,0,1-.857.857Z" />
-										</g>
-									</svg>
-									<span class="badge light text-white bg-primary rounded-circle">0</span>
-								</a>
-
-							</li>
 
 
 							<li class="nav-item dropdown header-profile">
 								<a class="nav-link" href="#;" role="button" data-bs-toggle="dropdown">
-									<img src="images/avatar/1.png" alt="">
+									<img src="images/veritas.png" alt="">
 
 									<div class="dropdown-menu dropdown-menu-end">
 										<a href="profile.php" class="dropdown-item ai-icon">
@@ -155,9 +141,9 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 		<div class="dlabnav">
 			<div class="dlabnav-scroll">
 				<div class="dropdown header-profile2 ">
-					<a class="nav-link " href="#;" role="button" data-bs-toggle="dropdown">
+					<a class="nav-link " href="admin-dashboard.php" role="button" data-bs-toggle="dropdown">
 						<div class="header-info2 d-flex align-items-center">
-							<img src="images/avatar/1.png" alt="">
+							<img src="images/veritas.png" alt="">
 
 							<div class="d-flex align-items-center sidebar-info">
 								<div>
@@ -169,35 +155,14 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 
 						</div>
 					</a>
-					<div class="dropdown-menu dropdown-menu-end">
-						<a href="profile.php" class="dropdown-item ai-icon ">
-							<svg xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-								<circle cx="12" cy="7" r="4"></circle>
-							</svg>
-							<span class="ms-2">Profile </span>
-						</a>
-
-						<a href="php/admin_logout.php" class="dropdown-item ai-icon">
-							<svg xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-								<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-								<polyline points="16 17 21 12 16 7"></polyline>
-								<line x1="21" y1="12" x2="9" y2="12"></line>
-							</svg>
-							<span class="ms-2">Logout </span>
-						</a>
-					</div>
+					
 				</div>
 				<ul class="metismenu" id="menu">
-					<li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+					<li><a class="" href="admin-dashboard.php" aria-expanded="false">
 							<i class="flaticon-025-dashboard"></i>
 							<span class="nav-text">Dashboard</span>
 						</a>
-						<ul aria-expanded="false">
-							<li><a href="book-hostel.php">Upload Proof</a></li>
-							<li><a href="status.php">Check Status</a></li>
-
-						</ul>
+						
 
 					</li>
 					<li><a class="" href="manage-hostel.php" aria-expanded="false">
@@ -219,7 +184,7 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 						</a>
 						
 					</li>
-					<li><a class="" href="view_hostel.php" aria-expanded="false">
+					<li><a class="" href="manage-hostel.php#view_room" aria-expanded="false">
 							<i class="flaticon-046-home"></i>
 							<span class="nav-text">	View Hostel</span>
 						</a>
@@ -246,6 +211,7 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 		***********************************-->
 
 
+
 		<!--**************************************
             Content body start
         ***********************************-->
@@ -264,224 +230,107 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
-                                    <form>
+								<form id="addRoomForm">
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Room Number</label>
+                <input type="text" class="form-control" id="roomNumber" placeholder="Room Number">
+            </div>
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Room Type</label>
+                <select id="roomType" class="default-select form-control wide">
+                    <option selected>Choose...</option>
+                </select>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Capacity</label>
+                <input type="number" class="form-control" id="capacity" placeholder="Capacity">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Room</button>
+    </form>
 
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Room Number</label>
-                                                <input type="text" class="form-control" placeholder="Name">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Room Type</label>
-                                                <option>
-													<select>2 in 1</select>
-													<select>2 in 1</select>
-												</option>
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Capacty</label>
-                                                <input type="number" class="form-control" placeholder="">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">State</label>
-                                                <select id="inputState" class="default-select form-control wide">
-                                                    <option selected>Choose...</option>
-                                                    <option>Option 1</option>
-                                                    <option>Option 2</option>
-                                                    <option>Option 3</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Zip</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="hr-check" type="checkbox">
-                                                <label for="hr-check" class="form-check-label">
-                                                    Check me out
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
-                                    </form>
                                 </div>
+								<hr>
+								
                             </div>
                         </div>
 					</div>
 					<div class="col-xl-6 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Assign Bed Space</h4>
+                                <h4 class="card-title">Add Room Category</h4>
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
-                                    <form>
-
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" placeholder="Name">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Email</label>
-                                                <input type="email" class="form-control" placeholder="Email">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">State</label>
-                                                <select id="inputState" class="default-select form-control wide">
-                                                    <option selected>Choose...</option>
-                                                    <option>Option 1</option>
-                                                    <option>Option 2</option>
-                                                    <option>Option 3</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Zip</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="hr-check" type="checkbox">
-                                                <label for="hr-check" class="form-check-label">
-                                                    Check me out
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
-                                    </form>
+								<form id="addCategoryForm">
+        <div class="row">
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-control" id="categoryName" placeholder="Name" required>
+            </div>
+            <div class="mb-3 col-md-6">
+                <label class="form-label">Rate</label>
+                <input type="text" class="form-control" id="categoryRate" placeholder="300000" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Room Category</button>
+    </form>
                                 </div>
                             </div>
+							<HR>
                         </div>
 					</div>
-					<div class="col-xl-6 col-lg-12">
-                        <div class="card">
+					<div class="col-xl-7 col-lg-12">
+                        <div class="card" id="view_room">
                             <div class="card-header">
-                                <h4 class="card-title"></h4>
+                                <h4 class="card-title">View Room</h4>
                             </div>
                             <div class="card-body">
-                                <div class="basic-form">
-                                    <form>
+    <div class="basic-form">
+        <table class="table display mb-4 dataTablesCard  card-table" id="roomTable" >
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Room No.</th>
+                    <th> Category</th>
+                    <th> Capacity</th>
+                    <th>Available</th>
+					<th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
 
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" placeholder="Name">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Email</label>
-                                                <input type="email" class="form-control" placeholder="Email">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">State</label>
-                                                <select id="inputState" class="default-select form-control wide">
-                                                    <option selected>Choose...</option>
-                                                    <option>Option 1</option>
-                                                    <option>Option 2</option>
-                                                    <option>Option 3</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Zip</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="hr-check" type="checkbox">
-                                                <label for="hr-check" class="form-check-label">
-                                                    Check me out
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
 					</div>
-					<div class="col-xl-6 col-lg-12">
+					<div class="col-xl-5 col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Horizontal Form</h4>
+                                <h4 class="card-title"> Room Category</h4>
                             </div>
-                            <div class="card-body">
-                                <div class="basic-form">
-                                    <form>
-
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Name</label>
-                                                <input type="text" class="form-control" placeholder="Name">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Email</label>
-                                                <input type="email" class="form-control" placeholder="Email">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Password</label>
-                                                <input type="password" class="form-control" placeholder="Password">
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">City</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">State</label>
-                                                <select id="inputState" class="default-select form-control wide">
-                                                    <option selected>Choose...</option>
-                                                    <option>Option 1</option>
-                                                    <option>Option 2</option>
-                                                    <option>Option 3</option>
-                                                </select>
-                                            </div>
-                                            <div class="mb-3 col-md-6">
-                                                <label class="form-label">Zip</label>
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <div class="form-check">
-                                                <input class="form-check-input" id="hr-check" type="checkbox">
-                                                <label for="hr-check" class="form-check-label">
-                                                    Check me out
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
-                                    </form>
-                                </div>
-                            </div>
+							<div class="card-body">
+    <div class="basic-form">
+        <table class="table display mb-4 dataTablesCard  card-table" id="roomDetailsTable">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th> Category</th>
+                    <th> Rate</th>
+					<th>Actions</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+               
+            </tbody>
+        </table>
+    </div>
+</div>
                         </div>
 					</div>
 					
@@ -508,7 +357,7 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 		***********************************-->
 		<div class="footer">
 			<div class="copyright">
-				<p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">ClintonCode</a> 2024</p>
+				<p>Copyright © Designed &amp; Developed by <a href="#" target="_blank">SoftwareTeam  Veritas ICT </a> 2024</p>
 			</div>
 		</div>
 
@@ -590,6 +439,250 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 			}, 1000);
 		});
 	</script>
+
+<script>
+    $(document).ready(function() {
+        function fetchRoomCategories() {
+            return $.getJSON('php/room_category.php');
+        }
+
+        function fetchRooms() {
+            return $.getJSON('php/room.php');
+        }
+
+        function displayRooms(categories, rooms) {
+            var tableBody = $('#roomTable tbody');
+            tableBody.empty(); // Clear existing rows
+            
+            var categoriesMap = {};
+            categories.forEach(function(category) {
+                categoriesMap[category.id] = category.room_type;
+            });
+
+            rooms.forEach(function(room, index) {
+                var roomCategory = categoriesMap[room.category_id];
+                var row = `
+                    <tr data-room-id="${room.id}">
+                        <td>${index + 1}</td>
+                        <td contenteditable="true" class="editable">${room.room_number}</td>
+                        <td>
+                            <select class="form-control editable">
+                                ${Object.entries(categoriesMap).map(([id, type]) => `<option value="${id}" ${room.category_id == id ? 'selected' : ''}>${type}</option>`).join('')}
+                            </select>
+                        </td>
+                        <td contenteditable="true" class="editable">${room.full_capacity}</td>
+                        <td contenteditable="true" class="editable">${room.available_space}</td>
+                        <td>
+                            <button class="btn btn-primary edit-button">Edit</button>
+                            <button class="btn btn-success update-button" style="display:none;">Update</button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.append(row);
+            });
+
+            // Add event listeners for the edit and update buttons
+            tableBody.on('click', '.edit-button', function() {
+                var row = $(this).closest('tr');
+                row.find('.editable').attr('contenteditable', 'true');
+                row.find('.edit-button').hide();
+                row.find('.update-button').show();
+            });
+
+            tableBody.on('click', '.update-button', function() {
+                var row = $(this).closest('tr');
+                var roomId = row.data('room-id');
+                var roomNumber = row.find('td').eq(1).text();
+                var roomCategory = row.find('select').val();
+                var fullCapacity = row.find('td').eq(3).text();
+                var availableSpace = row.find('td').eq(4).text();
+
+                $.ajax({
+                    url: 'php/update_room.php',
+                    method: 'POST',
+                    data: {
+                        id: roomId,
+                        room_number: roomNumber,
+                        category_id: roomCategory,
+                        full_capacity: fullCapacity,
+                        available_space: availableSpace
+                    },
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            row.find('.editable').attr('contenteditable', 'false');
+                            row.find('.edit-button').show();
+                            row.find('.update-button').hide();
+                            alert('Room details updated successfully!');
+                        } else {
+                            alert('Error updating room details: ' + response.message);
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Error updating room details:', error);
+                    }
+                });
+            });
+        }
+
+        // Fetch room categories and rooms, then display them
+        $.when(fetchRoomCategories(), fetchRooms()).done(function(categoriesResponse, roomsResponse) {
+            var categories = categoriesResponse[0];
+            var rooms = roomsResponse[0];
+            displayRooms(categories, rooms);
+        }).fail(function(error) {
+            console.error('Error fetching room data:', error);
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        function fetchRoomCategories() {
+            $.getJSON('php/room_category.php', function(data) {
+                var tableBody = $('#roomDetailsTable tbody');
+                tableBody.empty(); // Clear existing rows
+                
+                data.forEach(function(category, index) {
+                    var row = `
+                        <tr data-category-id="${category.id}">
+                            <td>${index + 1}</td>
+                            <td contenteditable="true" class="editable">${category.room_type}</td>
+                            <td contenteditable="true" class="editable">${category.rate}</td>
+                            <td>
+                                <button class="btn btn-primary edit-button">Edit</button>
+                                <button class="btn btn-success update-button" style="display:none;">Update</button>
+                            </td>
+                        </tr>
+                    `;
+                    tableBody.append(row);
+                });
+
+                // Add event listeners for the edit and update buttons
+                tableBody.on('click', '.edit-button', function() {
+                    var row = $(this).closest('tr');
+                    row.find('.editable').attr('contenteditable', 'true');
+                    row.find('.edit-button').hide();
+                    row.find('.update-button').show();
+                });
+
+                tableBody.on('click', '.update-button', function() {
+                    var row = $(this).closest('tr');
+                    var categoryId = row.data('category-id');
+                    var roomType = row.find('td').eq(1).text();
+                    var rate = row.find('td').eq(2).text();
+
+                    $.ajax({
+                        url: 'php/update_room_category.php',
+                        method: 'POST',
+                        data: {
+                            id: categoryId,
+                            room_type: roomType,
+                            rate: rate
+                        },
+                        success: function(response) {
+                            if (response.status === 'success') {
+                                row.find('.editable').attr('contenteditable', 'false');
+                                row.find('.edit-button').show();
+                                row.find('.update-button').hide();
+                                alert('Category details updated successfully!');
+                            } else {
+                                alert('Error updating category details: ' + response.message);
+                            }
+                        },
+                        error: function(error) {
+                            console.error('Error updating category details:', error);
+                        }
+                    });
+                });
+            }).fail(function(error) {
+                console.error('Error fetching room categories:', error);
+            });
+        }
+
+        // Fetch room categories on page load
+        fetchRoomCategories();
+    });
+</script>
+
+
+<script>
+        $(document).ready(function() {
+            // Fetch room categories and populate the dropdown
+            function fetchRoomCategories() {
+                $.getJSON('php/room_category.php', function(data) {
+                    var roomTypeSelect = $('#roomType');
+                    roomTypeSelect.empty(); // Clear existing options
+                    roomTypeSelect.append('<option selected>Choose...</option>');
+                    
+                    data.forEach(function(category) {
+                        var option = $('<option></option>').val(category.id).text(category.room_type);
+                        roomTypeSelect.append(option);
+                    });
+                }).fail(function(error) {
+                    console.error('Error fetching room categories:', error);
+                });
+            }
+
+            // Fetch room categories on page load
+            fetchRoomCategories();
+
+            // Handle form submission
+            $('#addRoomForm').submit(function(event) {
+                event.preventDefault();
+                
+                var roomNumber = $('#roomNumber').val();
+                var roomType = $('#roomType').val();
+                var capacity = $('#capacity').val();
+
+                $.ajax({
+                    url: 'php/add_room.php',
+                    method: 'POST',
+                    data: {
+                        roomNumber: roomNumber,
+                        roomType: roomType,
+                        capacity: capacity
+                    },
+                    success: function(response) {
+                        alert('Room added successfully!');
+                        $('#addRoomForm')[0].reset();
+                    },
+                    error: function(error) {
+                        console.error('Error adding room:', error);
+                    }
+                });
+            });
+        });
+    </script>
+
+<script>
+        $(document).ready(function() {
+            // Handle form submission
+            $('#addCategoryForm').submit(function(event) {
+                event.preventDefault();
+
+                var categoryName = $('#categoryName').val();
+                var categoryRate = $('#categoryRate').val();
+
+                $.ajax({
+                    url: 'php/add_category.php',
+                    method: 'POST',
+                    data: {
+                        categoryName: categoryName,
+                        categoryRate: categoryRate
+                    },
+                    success: function(response) {
+                        alert('Room category added successfully!');
+                        $('#addCategoryForm')[0].reset();
+                    },
+                    error: function(error) {
+                        console.error('Error adding room category:', error);
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 
 

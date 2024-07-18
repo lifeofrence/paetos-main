@@ -210,113 +210,50 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 			Sidebar end
 		***********************************-->
 
-		<div class="content-body">
-			<!-- row -->
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-xl-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="row shapreter-row">
-									<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
-										<div class="static-icon">
-											<span>
-												<i class="fas fa-eye"></i>
-											</span>
-											<h3 class="count mb-0" id="userCount">0</h3>
-											<p class="mb-0">Users</spapn>
-										</div>
-									</div>
-									<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
-										<div class="static-icon">
-											<span>
-												<i class="far fa-comments"></i>
-											</span>
-											<h3 class="count mb-0" id="userRoomCategory">0</h3>
-											<p class="mb-0">Room Category</p>
-										</div>
-									</div>
-									<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
-										<div class="static-icon">
-											<span>
-												<i class="fas fa-suitcase"></i>
-											</span>
-											<h3 class="count mb-0" id="rooms">0</h3>
-											<p class="mb-0">Rooms</p>
-										</div>
-									</div>
-									<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
-										<div class="static-icon">
-											<span>
-												<i class="fas fa-suitcase"></i>
-											</span>
-											<h3 class="count mb-0" id="roomSpace">0</h3>
-											<p class="mb-0">Rooms Available</p>
-										</div>
-									</div>
-									<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
-										<div class="static-icon">
-											<span>
-												<i class="fas fa-calendar"></i>
-											</span>
-											<h3 class="count mb-0" id="reservations">0</h3>
-											<p class="mb-0">Rooms Assigned</p>
-										</div>
-									</div>
-									<div class="col-xl-2 col-lg-2 col-sm-4 col-6">
-										<div class="static-icon">
-											<span>
-												<i class="fas fa-phone-alt"></i>
-											</span>
-											<h3 class="count mb-0" id="payments">0</h3>
-											<p class="mb-0">Payment </p>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-					<a href="manage-hostel.php">
-						<div class="social-graph-wrapper widget-facebook">
-							<span class="s-icon">Manage Hostel<i class="fab fa-add"></i></span>
-						</div>
-					</a>
-						
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-					<a href="confirm-payments.php">
-						<div class="social-graph-wrapper widget-linkedin">
-							<span class="s-icon">Confirm Payments<i class="fab fa-"></i></span>
-						</div>
-					</a>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-						<a href="list-student.php">
-						<div class="social-graph-wrapper widget-googleplus">
-							<span class="s-icon">List Students <i class="fab fa-"></i></span>
-						</div>
-						</a>
-					</div>
-					<div class="col-xl-3 col-xxl-3 col-sm-6">
-					<a href="manage-hostel.php#view_room">
-						<div class="social-graph-wrapper widget-twitter">
-							<span class="s-icon">View Hostel<i class="fab fa-"></i></span>
-						</div>
-					</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-
-
-
 		<!--**********************************
 			Content body end
 		***********************************-->
 
+		<div class="content-body">
+        <div class="container-fluid">
+            <div class="row page-titles">
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title"> List Student</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table" id="userTable">
+                                    <thead>
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Reg No</th>
+                                            <th>First Name</th>
+                                            <th>Middle Name</th>
+                                            <th>Last Name</th>
+                                            <th>Gender</th>
+                                            <th>Contact No</th>
+                                            <th>Email</th>
+                                           
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Content will be dynamically loaded here via JavaScript -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				
+				
+            </div>
+        </div>
+    </div>
 
 
 		<!--**********************************
@@ -406,122 +343,88 @@ include 'php/fetch_admin_info.php'; // Include file to fetch admin info
 			}, 1000);
 		});
 	</script>
-	<script>
-        // Function to fetch user count and update the HTML
-        function fetchUserCount() {
-            fetch('php/fetch_user_count.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        document.getElementById('userCount').innerText = data.user_count;
-                    } else {
-                        console.error('Error fetching user count:', data.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
+ <script>
+    $(document).ready(function() {
+        // Fetch user data on page load
+        fetchUserData();
 
-        // Fetch user count on page load
-        document.addEventListener('DOMContentLoaded', fetchUserCount);
-    </script>
-	<script>
-        // Function to fetch userRoomCategory and update the HTML
-        function fetchUserCount() {
-            fetch('php/fetch_roomCategory.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        document.getElementById('userRoomCategory').innerText = data.userRoomCategory;
-						
-                    } else {
-                        console.error('Error fetching userRoomCategory:', data.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Fetch userRoomCategory on page load
-        document.addEventListener('DOMContentLoaded', fetchUserCount);
-    </script>
-
-<script>
-        // Function to fetch userRoomCategory and update the HTML
-        function fetchUserCount() {
-            fetch('php/fetch_roomnumbers.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        document.getElementById('rooms').innerText = data.rooms;
-						
-                    } else {
-                        console.error('Error fetching rooms:', data.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Fetch userRoomCategory on page load
-        document.addEventListener('DOMContentLoaded', fetchUserCount);
-    </script>
-
-<script>
-        // Function to fetch userRoomCategory and update the HTML
-        function fetchUserCount() {
-            fetch('php/fetch_roomassign.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        document.getElementById('reservations').innerText = data.reservations;
-						
-                    } else {
-                        console.error('Error fetching reservations:', data.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Fetch userRoomCategory on page load
-        document.addEventListener('DOMContentLoaded', fetchUserCount);
-    </script>
-	<script>
-        // Function to fetch userRoomCategory and update the HTML
-        function fetchUserCount() {
-            fetch('php/fetch_roompayment.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        document.getElementById('payments').innerText = data.payments;
-						
-                    } else {
-                        console.error('Error fetching payments:', data.message);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Fetch userRoomCategory on page load
-        document.addEventListener('DOMContentLoaded', fetchUserCount);
-    </script>
-
-<script>
-    // Function to fetch total available space and update the HTML
-    function fetchTotalAvailableSpace() {
-        fetch('php/fetch_roomspace.php')
-            .then(response => response.json())
-            .then(data => {
+        // Function to fetch user data from server
+        function fetchUserData() {
+            $.getJSON('php/fetch_user.php', function(data) {
                 if (data.status === 'success') {
-                    document.getElementById('roomSpace').innerText = data.total_available_space;
+                    displayUsers(data.users);
                 } else {
-                    console.error('Error fetching total available space:', data.message);
+                    console.error('Error:', data.message);
                 }
-            })
-            .catch(error => console.error('Error:', error));
-    }
+            }).fail(function(error) {
+                console.error('Error fetching user data:', error);
+            });
+        }
 
-    // Fetch total available space on page load
-    document.addEventListener('DOMContentLoaded', fetchTotalAvailableSpace);
+        // Function to display users in the table
+        function displayUsers(users) {
+            var tableBody = $('#userTable tbody');
+            tableBody.empty(); // Clear existing rows
+
+            users.forEach(function(user, index) {
+                var row = `
+                    <tr data-userid="${user.id}">
+                        <td>${index + 1}</td>
+                        <td><input type="text" class="form-control" value="${user.regNo}" name="regNo"></td>
+                        <td><input type="text" class="form-control" value="${user.firstName}" name="firstName"></td>
+                        <td><input type="text" class="form-control" value="${user.middleName}" name="middleName"></td>
+                        <td><input type="text" class="form-control" value="${user.lastName}" name="lastName"></td>
+                        <td><input type="text" class="form-control" value="${user.gender}" name="gender"></td>
+                        <td><input type="text" class="form-control" value="${user.contactNo}" name="contactNo"></td>
+                        <td><input type="email" class="form-control" value="${user.email}" name="email"></td>
+                        <td>
+                            <button class="btn btn-primary btn-sm btn-save">Edit</button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.append(row);
+            });
+
+            // Attach event listener for save button click
+            $('.btn-save').on('click', function() {
+                var row = $(this).closest('tr');
+                var userId = row.attr('data-userid');
+                var userData = {
+                    regNo: row.find('input[name="regNo"]').val(),
+                    firstName: row.find('input[name="firstName"]').val(),
+                    middleName: row.find('input[name="middleName"]').val(),
+                    lastName: row.find('input[name="lastName"]').val(),
+                    gender: row.find('input[name="gender"]').val(),
+                    contactNo: row.find('input[name="contactNo"]').val(),
+                    email: row.find('input[name="email"]').val()
+                };
+
+                // Send updated data to server for saving
+                $.ajax({
+                    url: 'php/update_user.php',
+                    method: 'POST',
+                    data: { userId: userId, userData: userData },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.status === 'success') {
+                            // Optionally update UI or show success message
+                            console.log('User data updated successfully.');
+                        } else {
+                            console.error('Error updating user data:', response.message);
+                        }
+                    },
+                    error: function(error) {
+                        console.error('Error updating user data:', error);
+                    }
+                });
+            });
+        }
+    });
 </script>
-	
+
+
+
+
 </body>
 
 
